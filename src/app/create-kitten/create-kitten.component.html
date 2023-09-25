@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="kittenForm">
+    <div>
+        <fieldset>
+            <label for="name">Nom</label>
+            <input type="text" formControlName="name" name="name">
+        </fieldset>
+        <fieldset>
+            <label for="race">Race</label>
+            <input type="text" formControlName="race" name="race">
+        </fieldset>
+        <fieldset>
+            <label for="birthDate">Date de naissance</label>
+            <input type="text" formControlName="birthDate" name="birthDate">
+        </fieldset>
+        <fieldset>
+            <label for="image">Image</label>
+            <input type="file" formControlName="image" name="">
+        </fieldset>
+    </div>
+    <button type="submit">Ajouter un chat</button>
+</form>

@@ -1,0 +1,10 @@
+<div class="main">
+    <div *ngFor="let listKitten of kitten" class="kittenList">
+        <div class="kittenCard">
+            <img src={{listKitten.image}} alt="" class="kittenImg">
+            <p class="kittenName">{{listKitten.name}}</p>
+            <p class="kittenRace">{{listKitten.race}}</p>
+            <p class="kittenBirth">{{listKitten.birthDate}}</p>
+        </div>
+    </div>
+</div>
