@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="kittenForm">
+<form (ngSubmit)="createKitten()" [formGroup]="kittenForm" #myForm="ngForm">
     <div>
         <fieldset>
             <label for="name">Nom</label>
@@ -14,8 +14,14 @@
         </fieldset>
         <fieldset>
             <label for="image">Image</label>
-            <input type="file" formControlName="image" name="">
+            <input type="text" formControlName="image" name="image">
         </fieldset>
+        <!-- Message d'erreur URL image -->
+        <div>
+            <span *ngIf="formSubmitted && kittenForm.controls.image.errors?.['urlInvalid']">
+                L'image doit être un lien url
+            </span>
+        </div>
     </div>
     <button type="submit">Ajouter un chat</button>
 </form>

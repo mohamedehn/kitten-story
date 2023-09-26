@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-create-kitten',
   templateUrl: './create-kitten.component.html',
   styleUrls: ['./create-kitten.component.css']
 })
+
 export class CreateKittenComponent implements OnInit{
+
+  @Output() sendKittenToList : EventEmitter <object> = new EventEmitter();
+
+  public newKitten! : Object
 
   formSubmitted: boolean = false;
 
@@ -14,18 +19,37 @@ export class CreateKittenComponent implements OnInit{
     name: new FormControl(''),
     race: new FormControl(''),
     birthDate: new FormControl(''),
-    image: new FormControl(Image),
+    image: new FormControl('', [this.isUrlValid('image')]),
   })
 
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder){
+  
+  }
 
   ngOnInit(): void {
     
   }
 
-  onSubmit() {
-    console.log("L'ajout du chat a été effectué", this.kittenForm.value);
+  createKitten(): void {
     this.formSubmitted = true;
+    const kittenFormValue = this.kittenForm.value;
+    this.newKitten = kittenFormValue;
+    this.sendKittenToList.emit(this.newKitten);
+    console.log(this.newKitten);
   }
-}
+
+  isUrlValid(image: string): ValidatorFn{
+    return(control: AbstractControl) : ValidationErrors | null => {
+      const imageValue = control.get(image)?.value
+      if (typeof imageValue === 'string' && !imageValue.startsWith('http')){
+        return {'urlInvalid' : true};
+      }else{
+          return null
+        }
+      }
+    }
+  }
+
+
+

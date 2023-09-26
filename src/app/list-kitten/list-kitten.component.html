@@ -1,10 +1,13 @@
+<app-create-kitten (sendKittenToList)="onReceiveNewKitten($event)"></app-create-kitten>
 <div class="main">
-    <div *ngFor="let listKitten of kitten" class="kittenList">
+    <div *ngFor="let listKitten of kitten; let i = index" class="kittenList">
         <div class="kittenCard">
             <img src={{listKitten.image}} alt="" class="kittenImg">
             <p class="kittenName">{{listKitten.name}}</p>
             <p class="kittenRace">{{listKitten.race}}</p>
             <p class="kittenBirth">{{listKitten.birthDate}}</p>
         </div>
+        <button (click)="onAdoptKitten(i)">Adopter ce chat</button>
     </div>
 </div>
+<app-user-kitten></app-user-kitten>

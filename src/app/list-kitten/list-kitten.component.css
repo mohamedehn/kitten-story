@@ -31,3 +31,8 @@ p{
     height: 300px;
     object-fit: cover;
 }
+
+button{
+    display: flex;
+    margin: auto;
+}
