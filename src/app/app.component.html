@@ -1,12 +1,11 @@
-<nav>
-  <li>
-    <a [routerLink]="['/add-kitten']">Ajouter un chat</a>
-  </li>
-  <li>
-    <a [routerLink]="['/my-kitten']">Mes chats</a>
-  </li>
-  <li>
-    <a [routerLink]="['/list-kitten']">Liste des chats</a>
-  </li>
-</nav>
-<router-outlet></router-outlet>
+<div class="site">
+  <h1>Bienvenue sur Adopte un Chat !</h1>
+  <div class="container">
+    <app-create-kitten (sendKittenToList)="onReceiveNewKitten($event)" class="createKitten"></app-create-kitten>
+    <div class="split">
+      <app-list-kitten (sendKittenToMyCat)="getNewKitten($event)" class="listKitten"></app-list-kitten>
+      <app-user-kitten [adoptedKittens]="adoptedKittens" class="userKitten"></app-user-kitten>
+    </div>
+  </div>
+</div>
+

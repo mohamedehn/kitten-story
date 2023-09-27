@@ -1,27 +1,48 @@
-<form (ngSubmit)="createKitten()" [formGroup]="kittenForm" #myForm="ngForm">
-    <div>
-        <fieldset>
-            <label for="name">Nom</label>
-            <input type="text" formControlName="name" name="name">
-        </fieldset>
-        <fieldset>
-            <label for="race">Race</label>
-            <input type="text" formControlName="race" name="race">
-        </fieldset>
-        <fieldset>
-            <label for="birthDate">Date de naissance</label>
-            <input type="text" formControlName="birthDate" name="birthDate">
-        </fieldset>
-        <fieldset>
-            <label for="image">Image</label>
-            <input type="text" formControlName="image" name="image">
-        </fieldset>
-        <!-- Message d'erreur URL image -->
+<div>
+    <h3>Pour donner un chat, saisissez le formulaire ci-dessous:</h3>
+    <form (ngSubmit)="createKitten()" [formGroup]="kittenForm" #myForm="ngForm">
         <div>
-            <span *ngIf="formSubmitted && kittenForm.controls.image.errors?.['urlInvalid']">
-                L'image doit être un lien url
-            </span>
+            <fieldset>
+                <label for="name">Nom</label>
+                <input type="text" formControlName="name" name="name">
+            </fieldset>
+            <!-- Message d'erreur Nom -->
+            <div>
+                <span *ngIf="formSubmitted && kittenForm.controls.race.errors?.['required']">
+                    Un nom est requis
+                </span>
+            </div>
+            <fieldset>
+                <label for="race">Race</label>
+                <input type="text" formControlName="race" name="race">
+            </fieldset>
+            <!-- Message d'erreur race -->
+            <div>
+                <span *ngIf="formSubmitted && kittenForm.controls.race.errors?.['required']">
+                    Une race est requise
+                </span>
+            </div>
+            <fieldset>
+                <label for="birthDate">Date de naissance</label>
+                <input type="date" formControlName="birthDate" name="birthDate">
+            </fieldset>
+            <!-- Message d'erreur de la date de naissance -->
+            <div>
+                <span *ngIf="formSubmitted && kittenForm.controls.birthDate.errors?.['required']">
+                    Une date de naissance est requise
+                </span>
+            </div>
+            <fieldset>
+                <label for="image">Image</label>
+                <input type="text" formControlName="image" name="image">
+            </fieldset>
+            <!-- Message d'erreur URL image -->
+            <div>
+                <span *ngIf="formSubmitted && kittenForm.controls.image.errors?.['urlInvalid']">
+                    L'image doit être un lien url
+                </span>
+            </div>
         </div>
-    </div>
-    <button type="submit">Ajouter un chat</button>
-</form>
+        <button [appCustom]="kittenForm.valid" type="submit" class="btn btn-primary" [disabled]="!kittenForm.valid">Ajouter un chat</button>
+    </form>
+</div>

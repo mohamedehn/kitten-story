@@ -8,20 +8,16 @@ import { KITTENS } from '../mock-kitten';
 })
 export class ListKittenComponent {
 
-  @Output() sendKittenToMyCat : EventEmitter <object> = new EventEmitter();
+  @Output() sendKittenToMyCat: EventEmitter<any> = new EventEmitter();
 
   kitten = KITTENS;
-
-  onReceiveNewKitten(event: any): void {
-    this.kitten.push(event)
-  }
 
   onAdoptKitten(index: number): void {
     if (index >= 0 && index < this.kitten.length) { //permet de vérifier l'index du chat selectionné pour adoption
       const adoptedKitten = this.kitten[index]; // permet de stocker les données dans une constante
-      console.log(adoptedKitten);
-      this.sendKittenToMyCat.emit(adoptedKitten) //envoi les données vers un composant parent
-      this.kitten.splice(index, 1);
+      console.log(adoptedKitten); //log du chat sélectionné
+      this.kitten.splice(index, 1); // suppression du tableau du chat sélectionné
+      this.sendKittenToMyCat.emit(adoptedKitten) // envoi du chat adopter vers user-kitten
     }
   }
   

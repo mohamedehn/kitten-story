@@ -7,13 +7,15 @@ import { CreateKittenComponent } from './create-kitten/create-kitten.component';
 import { ListKittenComponent } from './list-kitten/list-kitten.component';
 import { UserKittenComponent } from './user-kitten/user-kitten.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomDirective } from './directives/custom.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateKittenComponent,
     ListKittenComponent,
-    UserKittenComponent
+    UserKittenComponent,
+    CustomDirective
   ],
   imports: [
     BrowserModule,

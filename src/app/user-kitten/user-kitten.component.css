@@ -1,0 +1,72 @@
+.main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-top: 120px;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+p{
+    margin: auto;
+    text-align: center;
+}
+
+h3{
+    position: absolute;
+}
+
+.kittenList{
+    width: 40%;
+    cursor: pointer;
+    margin-top: 70px;
+    border: 1px solid;
+    height: 208px;
+    border-width: 7px;
+    border-radius: 13px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 50px;
+}
+
+h5{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.kittenCard {
+    width: 85%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.kittenImg{
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+    border-bottom: 1px solid;
+}
+
+button{
+    display: flex;
+    margin: auto;
+}
+
+.kittenList:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: 0.5s;
+    height: 330px;
+  }
+  
+  .kittenList .card-body {
+    opacity: 0; 
+    transition: opacity 1.9s; 
+  }
+  
+  .kittenList:hover .card-body {
+    opacity: 1; 
+  }

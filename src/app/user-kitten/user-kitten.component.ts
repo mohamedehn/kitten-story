@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { KITTENS } from '../mock-kitten';
-import { Kitten } from '../models/kitten.model';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-kitten',
@@ -9,9 +7,9 @@ import { Kitten } from '../models/kitten.model';
 })
 export class UserKittenComponent {
 
-  myKitten! : Kitten
+  @Input() adoptedKittens: any[] = []; // On initialise un tableau vide qui va venir stocker les données du chaton adopté
 
-  getNewKitten(event: any): void {
-    this.myKitten = event
+  getNewKitten(kitten: any): void {
+    this.adoptedKittens.push(kitten)
   }
 }

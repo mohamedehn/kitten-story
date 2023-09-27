@@ -1,1 +1,9 @@
-<div (sendKittenToMyCat)="getNewKitten($event)">Ma liste de chat</div>
+<h3>Mes chats adoptés</h3>
+<div class="main" *ngFor="let listKitten of adoptedKittens" class="kittenList">
+    <img src={{listKitten.image}} class="card-img-top kittenImg"/>
+    <div class="card-body kittenCard">
+      <h5 class="card-title">{{listKitten.name}}</h5>
+      <p class="card-text">{{listKitten.race}}</p>
+      <p class="card-text">{{listKitten.birthDate}}</p>
+    </div>
+  </div>
